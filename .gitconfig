@@ -1,0 +1,9 @@
+[user]
+	email = janetmatsen@gmail.com
+	name = Janet Matsen
+[color]
+	ui = auto
+[core]
+	editor = vim
+[push]
+	default = simple
