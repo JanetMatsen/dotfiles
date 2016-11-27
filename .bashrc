@@ -4,8 +4,16 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Variables
 export PATH="$PATH:$HOME/bin"
 
+# Functions
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "*"
+}
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+}
+
 # Prompt 
-PS1='\h:\W`__git_ps1` \u\$ '
+PS1='\h:\W$(parse_git_branch) \u\$ '
 
 # Aliases
 alias ll='ls -l'
@@ -15,9 +23,8 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # [[ -s ~/.bashrc ]] && source ~/.bashrc
 
-echo $OS_TYPE | grep darwin && {
+echo $OSTYPE | grep darwin > /dev/null && {
     # Put mac-specific things here.
-    echo "welcome to Mac"
     source ~/.iterm2_shell_integration.`basename $SHELL`
     source /usr/local/git/contrib/completion/git-completion.bash
 
