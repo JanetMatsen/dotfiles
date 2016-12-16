@@ -3,7 +3,7 @@ execute pathogen#infect()
 syntax on
 
 set cryptmethod=blowfish
-set mouse=a
+"set mouse=a
 set softtabstop=4
 set tabstop=4
 set shiftwidth=4
