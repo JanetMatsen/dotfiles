@@ -38,3 +38,6 @@ echo $OSTYPE | grep darwin > /dev/null && {
 
     test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 }
+
+export HISTSIZE=5000
+export HISTFILESIZE=5000
