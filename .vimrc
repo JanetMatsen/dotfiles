@@ -1,5 +1,9 @@
 execute pathogen#infect()
 
+" clear out trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
+
 syntax on
 
 set cryptmethod=blowfish
